@@ -7,6 +7,11 @@ namespace SpriteKind {
 controller.anyButton.onEvent(ControllerButtonEvent.Pressed, function () {
     controller.moveSprite(ducky)
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.win, function (sprite, otherSprite) {
+    game.gameOver(true)
+    sprites.destroy(odd_one_out)
+    game.setGameOverEffect(true, effects.confetti)
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.dsa, function (sprite, otherSprite) {
     game.gameOver(false)
     sprites.destroy(wrong_one_2)
@@ -14,11 +19,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.dsa, function (sprite, otherSpri
 sprites.onOverlap(SpriteKind.Player, SpriteKind.asd, function (sprite, otherSprite) {
     game.gameOver(false)
     sprites.destroy(wrong_one_1)
-})
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
-    game.gameOver(true)
-    sprites.destroy(odd_one_out)
-    game.setGameOverEffect(true, effects.confetti)
 })
 let odd_one_out: Sprite = null
 let wrong_one_1: Sprite = null
